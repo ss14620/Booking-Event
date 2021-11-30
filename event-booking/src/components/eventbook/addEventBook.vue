@@ -160,9 +160,15 @@ export default {
     // },
   },
   methods: {
+    /**
+     * Redirects back to event booking page
+     */
     cancelBooking() {
       this.$router.push("/");
     },
+    /**
+     * Book Ticket for selected event
+     */
     bookTicket() {
       this.$v.$touch();
       if (this.$v.$invalid) return;
@@ -196,6 +202,7 @@ export default {
         this.attendeeName = {};
       }
       this.$v.$reset();
+      // Redirects back to event page after successfully booked
       this.$router.push("/");
     },
   },

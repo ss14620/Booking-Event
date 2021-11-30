@@ -112,19 +112,28 @@ export default {
     };
   },
   methods: {
+    /**
+     * It takes to add event booking page
+     * @param id - It take the seat booking id
+     * @param seats - Current seat booking count for selected event
+     * @param src - Passing the image src to routes
+     */
     bookEvent(id, seats, src) {
       this.$router.push({
         name: "AddEvent",
         params: { id: id, seatsAvailable: seats, src: src },
       });
     },
+    /**
+     * To Display the event count on display on top
+     */
     countEvent() {
       this.count = this.items.length;
     },
   },
   created() {
+    // Check if localStorage of eventData else store the local item JSON
     if (!localStorage.getItem("eventData")) {
-      console.log("Inside");
       localStorage.setItem("eventData", JSON.stringify(this.items));
     }
     this.intialData = JSON.parse(localStorage.getItem("eventData"));
